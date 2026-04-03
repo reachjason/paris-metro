@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  --font-mono: "JetBrains Mono", "SF Mono", "Fira Code", ui-monospace, monospace;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+@keyframes flip-in {
+  from { transform: rotateX(90deg); opacity: 0; }
+  to { transform: rotateX(0deg); opacity: 1; }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.animate-flip-in {
+  animation: flip-in 0.3s ease-out;
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Solari board split-flap aesthetic */
+.flap-cell {
+  background: linear-gradient(180deg, #1a1a2e 0%, #16162a 49.5%, #12122a 50.5%, #0e0e26 100%);
+  text-shadow: 0 0 8px rgba(255, 200, 50, 0.3);
+}
+
+body {
+  margin: 0;
+  background: #0a0a1a;
+}
+
+#root {
+  min-height: 100svh;
+}
