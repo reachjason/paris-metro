@@ -1,38 +1,23 @@
-import { useState, useEffect } from 'react';
+interface StationHeaderProps {
+  title: string;
+  subtitle: string;
+  address: string;
+}
 
-export function StationHeader() {
-  const [time, setTime] = useState(new Date());
-
-  useEffect(() => {
-    const interval = setInterval(() => setTime(new Date()), 1000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const timeStr = time.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-  const dateStr = time.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
-
+export function StationHeader({ title, subtitle, address }: StationHeaderProps) {
   return (
-    <header className="bg-gradient-to-b from-[#0f0f2a] to-[#0a0a1a] border-b border-blue-900/30 px-6 py-5">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center">
-            <svg viewBox="0 0 24 24" className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
-              <line x1="4" y1="22" x2="4" y2="15" />
-            </svg>
-          </div>
-          <div>
-            <h1 className="text-2xl font-bold text-white tracking-tight">Gare du Nord</h1>
-            <p className="text-sm text-blue-300/60 capitalize">{dateStr}</p>
-          </div>
-        </div>
-        <div className="text-right">
-          <div className="font-mono text-3xl font-bold text-amber-400 tracking-widest tabular-nums">
-            {timeStr}
-          </div>
-          <p className="text-xs text-blue-300/40 mt-1">Paris, France</p>
-        </div>
+    <div className="bg-gradient-to-r from-sky-500/5 to-transparent border-b border-white/5 px-6 py-6">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-3xl font-bold text-white tracking-tight">{title}</h2>
+        <p className="text-base text-sky-300/50 mt-1">{subtitle}</p>
+        <p className="text-sm text-white/25 mt-1 flex items-center gap-1.5">
+          <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          {address}
+        </p>
       </div>
-    </header>
+    </div>
   );
 }

@@ -1,14 +1,27 @@
-import { StationHeader } from './components/StationHeader';
-import { DepartureBoard } from './components/DepartureBoard';
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import { Layout } from './components/Layout';
+import DeparturesPage from './pages/DeparturesPage';
+import BirHakeimPage from './pages/BirHakeimPage';
+import EurostarPage from './pages/EurostarPage';
+import StationsPage from './pages/StationsPage';
+import ItineraryHistoricPage from './pages/ItineraryHistoricPage';
+import ItineraryCulturalPage from './pages/ItineraryCulturalPage';
+import ItineraryFoodPage from './pages/ItineraryFoodPage';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#0a0a1a] text-white font-sans flex flex-col">
-      <StationHeader />
-      <DepartureBoard />
-      <footer className="bg-[#08081a] border-t border-blue-900/20 px-6 py-3 text-center text-xs text-blue-300/20">
-        Gare du Nord - Tableau des departs et arrivees - Donnees simulees
-      </footer>
-    </div>
+    <HashRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route index element={<DeparturesPage />} />
+          <Route path="bir-hakeim" element={<BirHakeimPage />} />
+          <Route path="eurostar" element={<EurostarPage />} />
+          <Route path="stations" element={<StationsPage />} />
+          <Route path="itinerary/historic" element={<ItineraryHistoricPage />} />
+          <Route path="itinerary/cultural" element={<ItineraryCulturalPage />} />
+          <Route path="itinerary/food" element={<ItineraryFoodPage />} />
+        </Route>
+      </Routes>
+    </HashRouter>
   );
 }

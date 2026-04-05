@@ -3,6 +3,7 @@
 @theme {
   --font-mono: "JetBrains Mono", "SF Mono", "Fira Code", ui-monospace, monospace;
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Inter", system-ui, -apple-system, sans-serif;
 }
 
 @keyframes flip-in {
@@ -15,6 +16,11 @@
   50% { opacity: 0.3; }
 }
 
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .animate-flip-in {
   animation: flip-in 0.3s ease-out;
 }
@@ -23,15 +29,18 @@
   animation: pulse-dot 2s ease-in-out infinite;
 }
 
-/* Solari board split-flap aesthetic */
+.animate-fade-up {
+  animation: fade-up 0.5s ease-out both;
+}
+
 .flap-cell {
-  background: linear-gradient(180deg, #1a1a2e 0%, #16162a 49.5%, #12122a 50.5%, #0e0e26 100%);
-  text-shadow: 0 0 8px rgba(255, 200, 50, 0.3);
+  background: linear-gradient(180deg, #1e3a5f 0%, #1a3355 49.5%, #16304f 50.5%, #122b48 100%);
+  text-shadow: 0 0 8px rgba(100, 180, 255, 0.3);
 }
 
 body {
   margin: 0;
-  background: #0a0a1a;
+  background: #0a1628;
 }
 
 #root {
